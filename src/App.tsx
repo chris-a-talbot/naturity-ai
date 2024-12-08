@@ -9,8 +9,8 @@ import Community from './pages/Community';
 import ResourcesForStudents from './pages/ResourcesForStudents';
 import ResourcesForResearchers from './pages/ResourcesForResearchers';
 import ResourcesForEducators from './pages/ResourcesForEducators';
-import ResourcesForOrganizations from './pages/ResourcesForOrganizations.tsx';
-import Blog from "./pages/Blog.tsx"
+import ResourcesForOrganizations from './pages/ResourcesForOrganizations';
+import Blog from "./pages/Blog"
 
 function App() {
     return (
