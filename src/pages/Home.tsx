@@ -11,14 +11,14 @@ import './styles/Home.css';
 const upcomingWorkshops = [
     {
         title: "Introduction to AI in Ecological Research",
-        date: "Spring 2024",
+        date: "Spring 2025",
         type: "Workshop",
         capacity: "15 participants",
         status: "Registration Opening Soon"
     },
     {
         title: "AI Tools for Biological Data Analysis",
-        date: "Summer 2024",
+        date: "Summer 2025",
         type: "Seminar",
         capacity: "15 participants",
         status: "Coming Soon"
@@ -59,7 +59,7 @@ const Home = () => {
             <section className="py-20 bg-background-alt">
                 <div className="max-w-6xl mx-auto px-4">
                     <h2 className="text-4xl font-fraunces font-bold text-center text-primary-dark mb-4">
-                        Launching Spring 2024
+                        Launching Spring 2025
                     </h2>
                     <p className="text-center font-inter text-text-muted mb-12 max-w-2xl mx-auto">
                         Be among the first to participate in our hands-on workshops
