@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 
 const BioNav = () => {
     const [expandedSections, setExpandedSections] = useState(new Set());
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [visibleItems, setVisibleItems] = useState<string[]>([]);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const particlesRef = useRef<any[]>([]);
     const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
@@ -51,17 +54,20 @@ const BioNav = () => {
         {
             id: 'home',
             name: 'Home',
-            path: '/'
+            path: '/',
+            priority: 1
         },
         {
             id: 'learn',
             name: 'Learn',
-            path: '/learn'
+            path: '/learn',
+            priority: 2
         },
         {
             id: 'resources',
             name: 'Resources',
             path: '/resources',
+            priority: 3,
             children: [
                 { id: 'students', name: 'For Students', path: '/resources/students' },
                 { id: 'researchers', name: 'For Researchers', path: '/resources/researchers' },
@@ -72,19 +78,45 @@ const BioNav = () => {
         {
             id: 'community',
             name: 'Community',
-            path: '/community'
+            path: '/community',
+            priority: 4
         },
         {
             id: 'about',
             name: 'About',
-            path: '/about'
+            path: '/about',
+            priority: 5
         },
         {
             id: 'blog',
             name: 'Blog',
-            path: '/blog'
+            path: '/blog',
+            priority: 6
         }
     ];
+
+    useEffect(() => {
+        const updateVisibleItems = () => {
+            const width = window.innerWidth;
+            let visibleCount = 6;
+
+            if (width < 1280) visibleCount = 4;
+            if (width < 1024) visibleCount = 3;
+            if (width < 900) visibleCount = 2;
+            if (width < 768) visibleCount = 0;
+
+            const sortedItems = [...navItems]
+                .sort((a, b) => a.priority - b.priority)
+                .slice(0, visibleCount)
+                .map(item => item.id);
+
+            setVisibleItems(sortedItems);
+        };
+
+        updateVisibleItems();
+        window.addEventListener('resize', updateVisibleItems);
+        return () => window.removeEventListener('resize', updateVisibleItems);
+    }, []);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -175,7 +207,11 @@ const BioNav = () => {
             navigate(path);
             setExpandedSections(new Set());
         }
+        setIsMenuOpen(false);
     }, [navigate, toggleSection, expandedSections]);
+
+    const getVisibleNavItems = () => navItems.filter(item => visibleItems.includes(item.id));
+    const getHamburgerNavItems = () => navItems.filter(item => !visibleItems.includes(item.id));
 
     return (
         <div
@@ -192,19 +228,21 @@ const BioNav = () => {
 
             <div className="max-w-7xl mx-auto px-4">
                 <div className="flex items-center h-20 relative z-10">
-                    <button
-                        onClick={() => handleNavigation('/')}
-                        className="relative group transition-transform hover:scale-105"
-                    >
-                        <div className="text-3xl font-bold tracking-tight bg-gradient-to-r from-primary-light to-secondary bg-clip-text text-transparent">
-                            <span className="font-cabinet">Naturity</span>
-                            <span className="font-familjen">AI</span>
-                        </div>
-                        <div className="absolute inset-0 bg-gradient-to-r from-primary-light/20 to-secondary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </button>
+                    <div className="flex-1">
+                        <button
+                            onClick={() => handleNavigation('/')}
+                            className="relative group transition-transform hover:scale-105"
+                        >
+                            <div className="text-3xl font-bold tracking-tight bg-gradient-to-r from-primary-light to-secondary bg-clip-text text-transparent">
+                                <span className="font-cabinet">Naturity</span>
+                                <span className="font-familjen">AI</span>
+                            </div>
+                            <div className="absolute inset-0 bg-gradient-to-r from-primary-light/20 to-secondary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </button>
+                    </div>
 
-                    <div className="ml-16 flex space-x-12">
-                        {navItems.map(item => (
+                    <div className="flex items-center justify-center space-x-6">
+                        {getVisibleNavItems().map(item => (
                             <div key={item.id} className="relative">
                                 <button
                                     onClick={() => {
@@ -214,7 +252,7 @@ const BioNav = () => {
                                             handleNavigation(item.path);
                                         }
                                     }}
-                                    className={`px-6 py-2.5 rounded-full transition-all duration-300 text-lg font-inter font-medium
+                                    className={`px-4 py-2 rounded-full transition-all duration-300 text-lg font-inter font-medium
                                         ${expandedSections.has(item.id)
                                         ? 'bg-gradient-to-r from-primary to-primary-light text-text-light shadow-lg'
                                         : 'text-accent-light hover:text-text-light'
@@ -224,9 +262,7 @@ const BioNav = () => {
                                 </button>
 
                                 {item.children && expandedSections.has(item.id) && (
-                                    <div
-                                        className="absolute top-full left-0 mt-2 w-64 bg-background-dark/90 backdrop-blur-sm rounded-lg shadow-xl overflow-hidden border border-primary"
-                                    >
+                                    <div className="absolute top-full left-0 mt-2 w-64 bg-background-dark/90 backdrop-blur-sm rounded-lg shadow-xl overflow-hidden border border-primary">
                                         {item.children.map(child => (
                                             <button
                                                 key={child.id}
@@ -241,7 +277,58 @@ const BioNav = () => {
                             </div>
                         ))}
                     </div>
+
+                    <div className="flex items-center justify-end flex-1">
+                        {getHamburgerNavItems().length > 0 && (
+                            <button
+                                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                className="p-2 text-accent-light hover:text-text-light transition-colors"
+                                aria-label="Toggle menu"
+                            >
+                                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                            </button>
+                        )}
+                    </div>
                 </div>
+
+                {isMenuOpen && getHamburgerNavItems().length > 0 && (
+                    <div className="absolute top-20 left-0 right-0 bg-background-dark/95 backdrop-blur-sm border-t border-primary">
+                        {getHamburgerNavItems().map(item => (
+                            <div key={item.id}>
+                                <button
+                                    onClick={() => {
+                                        if (item.children) {
+                                            toggleSection(item.id);
+                                        } else {
+                                            handleNavigation(item.path);
+                                        }
+                                    }}
+                                    className={`w-full px-6 py-4 text-left text-lg font-inter font-medium
+                                        ${expandedSections.has(item.id)
+                                        ? 'bg-primary/20 text-text-light'
+                                        : 'text-accent-light hover:bg-primary/10 hover:text-text-light'
+                                    }`}
+                                >
+                                    {item.name}
+                                </button>
+
+                                {item.children && expandedSections.has(item.id) && (
+                                    <div className="bg-background-dark/90 border-y border-primary/20">
+                                        {item.children.map(child => (
+                                            <button
+                                                key={child.id}
+                                                onClick={() => handleNavigation(child.path)}
+                                                className="block w-full px-12 py-3 text-left text-lg font-inter font-medium text-accent-light hover:bg-primary/10 hover:text-text-light"
+                                            >
+                                                {child.name}
+                                            </button>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     );
