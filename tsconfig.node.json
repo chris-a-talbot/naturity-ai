@@ -11,7 +11,7 @@
     "moduleResolution": "bundler",
     "isolatedModules": true,
     "moduleDetection": "force",
-    "noEmit": true,
+    "emitDeclarationOnly": true,
     "allowImportingTsExtensions": true,
 
     /* Linting */

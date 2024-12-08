@@ -24,12 +24,9 @@
     "types": ["vite/client"],
 
     // Emit
-    "declaration": true,
-    "declarationMap": true,
+    "noEmit": true,
     "sourceMap": true,
-    "outDir": "./dist",
     "removeComments": false,
-    "noEmitOnError": true,
 
     // JavaScript Support
     "allowJs": false,
@@ -59,7 +56,10 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+
+    // Allow importing TypeScript files with extensions
+    "allowImportingTsExtensions": true
   },
   "include": [
     "src/**/*.ts",
@@ -71,5 +71,5 @@
     "dist",
     "build"
   ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": []
 }
