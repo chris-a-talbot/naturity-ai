@@ -43,6 +43,12 @@ export default {
         warning: '#F59E0B',   // Amber-500
         info: '#3B82F6',      // Blue-500
       },
+      fontFamily: {
+        cabinet: ['"Cabinet Grotesk"', 'system-ui', 'sans-serif'],
+        familjen: ['"Familjen Grotesk"', 'monospace'],
+        fraunces: ['Fraunces', 'Georgia', 'serif'],
+        inter: ['Inter', 'system-ui', 'sans-serif']
+      },
     },
   },
   plugins: [],

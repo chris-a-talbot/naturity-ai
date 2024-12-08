@@ -44,7 +44,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(to right, #10B981, #06B6D4);
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
@@ -106,3 +106,9 @@
 .delay-2 { animation-delay: 0.2s; }
 .delay-3 { animation-delay: 0.3s; }
 .delay-4 { animation-delay: 0.4s; }
+
+/* CSS Variables for brand colors */
+:root {
+    --primary-color: #10B981;
+    --secondary-color: #06B6D4;
+}

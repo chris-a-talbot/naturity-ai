@@ -1,113 +1,184 @@
-import { ArrowRight, Sprout, Brain, Users, School, Building2, GraduationCap, Shield, Instagram, Twitter, Github } from 'lucide-react';import { Link } from 'react-router-dom';
+import {
+    ArrowRight, Sprout, Brain, Users, School,
+    Building2, GraduationCap, Shield, Instagram,
+    Twitter, Github, ExternalLink, BookOpen,
+    Library, Presentation
+} from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './styles/Home.css';
+
+// Sample data for upcoming workshops
+const upcomingWorkshops = [
+    {
+        title: "Introduction to AI in Ecological Research",
+        date: "Spring 2024",
+        type: "Workshop",
+        capacity: "15 participants",
+        status: "Registration Opening Soon"
+    },
+    {
+        title: "AI Tools for Biological Data Analysis",
+        date: "Summer 2024",
+        type: "Seminar",
+        capacity: "15 participants",
+        status: "Coming Soon"
+    }
+];
 
 const Home = () => {
     return (
         <div className="min-h-screen bg-gradient-to-b from-background-alt to-background">
             {/* Hero Section */}
             <header className="mx-auto py-24 text-center animate-fade-in">
-                <div className="max-w-3xl mx-auto px-4">
-                    <h1 className="text-5xl font-bold text-primary-dark mb-8">
-                        Ethical AI for Natural Sciences
+                <div className="max-w-4xl mx-auto px-4">
+                    <h1 className="text-6xl font-fraunces font-bold text-primary-dark mb-8">
+                        Helping biologists use AI to explore and protect the natural world
                     </h1>
-                    <p className="text-xl text-text mb-6">
-                        From high school students to seasoned researchers, we're empowering biologists with responsible
-                        AI literacy for productivity and innovation
+                    <p className="text-xl mb-8 text-text-muted">
+                        Join our upcoming workshops and be part of the first wave of biologists
+                        bridging the gap between natural sciences and artificial intelligence.
                     </p>
-                    <Link
-                        to="/learn"
-                        className="hero-link bg-primary text-text-light px-8 py-4 rounded-lg inline-flex items-center gap-2 text-lg font-medium"
-                    >
-                        Start Your Journey <ArrowRight size={20}/>
-                    </Link>
+                    <div className="flex justify-center gap-4">
+                        <Link
+                            to="/workshops"
+                            className="bg-primary hover:bg-primary-light text-white px-6 py-3 rounded-lg inline-flex items-center gap-2 text-lg font-familjen font-medium"
+                        >
+                            View Upcoming Workshops <Presentation size={20}/>
+                        </Link>
+                        <Link
+                            to="/about"
+                            className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg inline-flex items-center gap-2 text-lg font-familjen font-medium transition-colors"
+                        >
+                            Learn More <ArrowRight size={20}/>
+                        </Link>
+                    </div>
                 </div>
             </header>
 
-            {/* Features Section */}
-            <section className="py-20 bg-background">
+            {/* Upcoming Programs Section */}
+            <section className="py-20 bg-background-alt">
                 <div className="max-w-6xl mx-auto px-4">
-                    <h2 className="text-4xl font-bold text-center text-primary-dark mb-16 animate-fade-in">
-                        Our Core Values
+                    <h2 className="text-4xl font-fraunces font-bold text-center text-primary-dark mb-4">
+                        Launching Spring 2024
                     </h2>
-                    <div className="grid md:grid-cols-3 gap-12">
-                        {[
-                            {
-                                icon: Sprout,
-                                title: "Domain Expertise",
-                                description: "Specialized resources for ecology, evolutionary biology, and other natural sciences"
-                            },
-                            {
-                                icon: Shield,
-                                title: "Ethical AI Practice",
-                                description: "Promoting responsible AI use that reduces bias, prevents errors, and enhances research integrity"
-                            },
-                            {
-                                icon: Users,
-                                title: "Inclusive Learning",
-                                description: "Making AI literacy accessible to everyone in biology, from students to senior researchers"
-                            }
-                        ].map(({icon: Icon, title, description}, index) => (
+                    <p className="text-center font-inter text-text-muted mb-12 max-w-2xl mx-auto">
+                        Be among the first to participate in our hands-on workshops
+                    </p>
+                    <div className="grid md:grid-cols-2 gap-8">
+                        {upcomingWorkshops.map((workshop, index) => (
                             <div
-                                key={title}
-                                className={`feature-card p-8 text-center bg-background rounded-xl animate-fade-in delay-${index + 1}`}
+                                key={workshop.title}
+                                className={`bg-background rounded-xl p-6 shadow-sm animate-fade-in delay-${index + 1}`}
                             >
-                                <div
-                                    className="feature-icon-container w-16 h-16 mx-auto mb-6 bg-accent rounded-full flex items-center justify-center">
-                                    <Icon className="text-primary-dark" size={32}/>
+                                <div className="mb-2 text-accent-dark font-familjen">
+                                    {workshop.type} • {workshop.date}
                                 </div>
-                                <h3 className="text-2xl font-semibold mb-4 text-primary-dark">{title}</h3>
-                                <p className="text-text">{description}</p>
+                                <h3 className="text-xl font-familjen font-semibold mb-3 text-primary-dark">
+                                    {workshop.title}
+                                </h3>
+                                <div className="text-text-muted font-inter mb-2">
+                                    {workshop.capacity}
+                                </div>
+                                <div className="text-primary font-inter font-medium">
+                                    {workshop.status}
+                                </div>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Resources Section */}
+            {/* Our Approach */}
+            <section className="py-20 bg-background">
+                <div className="max-w-6xl mx-auto px-4">
+                    <h2 className="text-4xl font-fraunces font-bold text-center text-primary-dark mb-16">
+                        Our Approach
+                    </h2>
+                    <div className="grid md:grid-cols-3 gap-12">
+                        {[
+                            {
+                                icon: Brain,
+                                title: "Field-Specific Learning",
+                                description: "Resources tailored to biological research contexts—from fieldwork to lab analysis.",
+                                example: "Hands-on workshops for practical applications"
+                            },
+                            {
+                                icon: Shield,
+                                title: "Responsible AI Practice",
+                                description: "Focus on ethical considerations, bias awareness, and research integrity.",
+                                example: "Ethics-first curriculum design"
+                            },
+                            {
+                                icon: Users,
+                                title: "Community Building",
+                                description: "Connect with fellow researchers while building practical AI skills.",
+                                example: "Interactive workshops and discussions"
+                            }
+                        ].map(({icon: Icon, title, description, example}, index) => (
+                            <div
+                                key={title}
+                                className={`p-8 bg-background rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 animate-fade-in delay-${index + 1}`}
+                            >
+                                <div className="w-16 h-16 mb-6 bg-accent rounded-full flex items-center justify-center">
+                                    <Icon className="text-primary-dark" size={32}/>
+                                </div>
+                                <h3 className="text-2xl font-familjen font-semibold mb-4 text-primary-dark">{title}</h3>
+                                <p className="text-text font-inter mb-4">{description}</p>
+                                <div className="text-sm font-inter text-text-muted">
+                                    {example}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Learning Paths */}
             <section className="py-20 bg-background-alt">
                 <div className="max-w-6xl mx-auto px-4">
-                    <h2 className="text-4xl font-bold text-center text-primary-dark mb-8 animate-fade-in">
-                        Resources for Every Stage
+                    <h2 className="text-4xl font-fraunces font-bold text-center text-primary-dark mb-4">
+                        Find Your Learning Path
                     </h2>
-                    <p className="text-center text-text-muted mb-16 max-w-2xl mx-auto">
-                        Whether you're just starting out or leading groundbreaking research, we provide tailored
-                        resources for your journey in biological sciences
+                    <p className="text-center font-inter text-text-muted mb-12 max-w-2xl mx-auto">
+                        Resources and workshops tailored to your experience level
                     </p>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[
                             {
                                 icon: GraduationCap,
-                                title: "Early Learning",
-                                description: "Foundational AI concepts for high school and undergraduate biology students",
-                                path: "/resources/students"
-                            },
-                            {
-                                icon: School,
-                                title: "Educational Tools",
-                                description: "Ethical AI integration guides and curriculum resources for biology educators",
-                                path: "/resources/educators"
+                                title: "Students & Early Career",
+                                description: "Start your journey in applying AI to biological research",
+                                features: ["Foundational concepts", "Hands-on tutorials", "Beginner-friendly workshops"],
+                                path: "/paths/early-career"
                             },
                             {
                                 icon: Brain,
-                                title: "Research Excellence",
-                                description: "Advanced AI applications in ecology and evolutionary biology research",
-                                path: "/resources/researchers"
+                                title: "Researchers & Faculty",
+                                description: "Integrate AI methods into your research and teaching",
+                                features: ["Research applications", "Teaching resources", "Advanced workshops"],
+                                path: "/paths/researchers"
                             },
                             {
                                 icon: Building2,
-                                title: "Institutional Support",
-                                description: "Supporting organizations in implementing ethical AI practices in biological research",
-                                path: "/resources/organizations"
+                                title: "Institutions",
+                                description: "Develop AI literacy programs at your organization",
+                                features: ["Program planning", "Curriculum design", "Implementation support"],
+                                path: "/paths/institutions"
                             }
-                        ].map(({icon: Icon, title, description, path}, index) => (
+                        ].map(({icon: Icon, title, description, features, path}, index) => (
                             <Link
                                 key={path}
                                 to={path}
-                                className={`resource-card p-8 rounded-xl bg-background animate-fade-in delay-${index + 1}`}
+                                className={`block p-8 rounded-xl bg-background shadow-sm hover:shadow-md hover:-translate-y-1 transition-all animate-fade-in delay-${index + 1}`}
                             >
                                 <Icon className="text-primary-dark mb-6" size={32}/>
-                                <h3 className="text-xl font-semibold mb-4 text-primary-dark">{title}</h3>
-                                <p className="text-text">{description}</p>
+                                <h3 className="text-xl font-familjen font-semibold mb-4 text-primary-dark">{title}</h3>
+                                <p className="text-text font-inter mb-4">{description}</p>
+                                <ul className="text-sm text-text-muted font-inter">
+                                    {features.map((feature) => (
+                                        <li key={feature} className="mb-1">• {feature}</li>
+                                    ))}
+                                </ul>
                             </Link>
                         ))}
                     </div>
@@ -116,68 +187,103 @@ const Home = () => {
 
             {/* Call to Action */}
             <section className="py-24 bg-primary-dark text-text-light">
-                <div className="max-w-4xl mx-auto px-4 text-center animate-fade-in">
-                    <h2 className="text-4xl font-bold mb-8">
-                        Shape the Future of Biological Research
+                <div className="max-w-4xl mx-auto px-4 text-center">
+                    <h2 className="text-4xl font-fraunces font-bold mb-8">
+                        Join Our Initial Programs
                     </h2>
-                    <p className="text-xl opacity-90 mb-10 max-w-2xl mx-auto">
-                        Join our community dedicated to advancing ethical AI practices in ecology and evolutionary
-                        biology. Together, we can enhance research while ensuring accuracy, reducing bias, and promoting
-                        diversity.
+                    <p className="text-xl font-inter opacity-90 mb-10 max-w-2xl mx-auto">
+                        Be part of our founding cohort as we launch our first workshops
+                        designed specifically for biological sciences.
                     </p>
-                    <Link
-                        to="/learn"
-                        className="cta-button bg-text-light text-primary-dark px-8 py-4 rounded-lg inline-flex items-center gap-2 text-lg font-medium"
-                    >
-                        Join Our Community <ArrowRight size={24}/>
-                    </Link>
+                    <div className="flex justify-center gap-4">
+                        <Link
+                            to="/workshops"
+                            className="bg-text-light text-primary-dark px-8 py-4 rounded-lg inline-flex items-center gap-2 text-lg font-familjen font-medium hover:bg-accent-light"
+                        >
+                            View Workshops <ArrowRight size={24}/>
+                        </Link>
+                        <Link
+                            to="/about"
+                            className="border-2 border-text-light text-text-light px-8 py-4 rounded-lg inline-flex items-center gap-2 text-lg font-familjen font-medium hover:bg-text-light hover:text-primary-dark transition-colors"
+                        >
+                            About Us <ExternalLink size={24}/>
+                        </Link>
+                    </div>
                 </div>
             </section>
 
             {/* Footer */}
-            <footer className="bg-background-dark text-text-light py-12">
+            <footer className="bg-primary text-white py-12">
                 <div className="max-w-6xl mx-auto px-4">
                     <div className="grid md:grid-cols-3 gap-12">
                         <div>
-                            <h3 className="text-xl font-semibold mb-4">NaturityAI</h3>
-                            <p className="opacity-80">
-                                Advancing ethical AI practices in natural sciences
+                            <h3 className="text-xl font-cabinet font-semibold mb-4">NaturityAI</h3>
+                            <p className="opacity-80 font-inter">
+                                Building AI literacy in biological sciences
                             </p>
                         </div>
                         <div>
-                            <h3 className="text-xl font-semibold mb-4">Contact</h3>
-                            <p className="opacity-80">info@naturity.ai</p>
+                            <h3 className="text-xl font-familjen font-semibold mb-4">Programs</h3>
+                            <ul className="space-y-2 font-inter">
+                                <li><Link to="/workshops" className="opacity-80 hover:opacity-100">Workshops</Link></li>
+                                <li><Link to="/about" className="opacity-80 hover:opacity-100">About</Link></li>
+                                <li><Link to="/contact" className="opacity-80 hover:opacity-100">Contact</Link></li>
+                            </ul>
                         </div>
                         <div>
-                            <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
-                            <div className="flex space-x-6">
-                                <a
-                                    href="https://www.instagram.com/naturityai"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="footer-link opacity-80 hover:opacity-100 transition-opacity"
-                                    aria-label="Follow us on Instagram"
-                                >
-                                    <Instagram size={24}/>
-                                </a>
+                            <h3 className="text-xl font-familjen font-semibold mb-4">Connect</h3>
+                            <div className="flex flex-wrap gap-6 mb-4">
                                 <a
                                     href="https://x.com/naturityai"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="footer-link opacity-80 hover:opacity-100 transition-opacity"
+                                    className="opacity-80 hover:opacity-100 transition-opacity"
                                     aria-label="Follow us on X (formerly Twitter)"
                                 >
                                     <Twitter size={24}/>
                                 </a>
                                 <a
-                                    href="https://github.com/naturityai"
+                                    href="https://github.com/NaturityAI"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="footer-link opacity-80 hover:opacity-100 transition-opacity"
-                                    aria-label="Visit our GitHub"
+                                    className="opacity-80 hover:opacity-100 transition-opacity"
+                                    aria-label="Follow us on GitHub"
                                 >
                                     <Github size={24}/>
                                 </a>
+                                <a
+                                    href="https://www.instagram.com/naturityai"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="opacity-80 hover:opacity-100 transition-opacity"
+                                    aria-label="Follow us on Instagram"
+                                >
+                                    <Instagram size={24}/>
+                                </a>
+                                <a
+                                    href="https://www.tiktok.com/@naturityai"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="opacity-80 hover:opacity-100 transition-opacity"
+                                    aria-label="Follow us on TikTok"
+                                >
+                                    {/* Since we don't have a TikTok icon in lucide-react, we'll create a simple text alternative */}
+                                    <span className="font-familjen font-medium">TikTok</span>
+                                </a>
+                            </div>
+                            <div className="font-inter text-sm opacity-80">
+                                <p>Contact: info@naturity.ai</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="mt-12 pt-8 border-t border-white/20">
+                        <div className="flex flex-col md:flex-row justify-between items-center gap-4 font-inter text-sm opacity-80">
+                            <div>
+                                © {new Date().getFullYear()} NaturityAI. All rights reserved.
+                            </div>
+                            <div className="flex gap-6">
+                                <Link to="/privacy" className="hover:opacity-100">Privacy Policy</Link>
+                                <Link to="/terms" className="hover:opacity-100">Terms of Service</Link>
                             </div>
                         </div>
                     </div>

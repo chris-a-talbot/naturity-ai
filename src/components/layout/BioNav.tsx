@@ -3,29 +3,31 @@ import { useNavigate } from 'react-router-dom';
 
 const BioNav = () => {
     const [expandedSections, setExpandedSections] = useState(new Set());
-    const canvasRef = useRef(null);
-    const particlesRef = useRef([]);
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const particlesRef = useRef<any[]>([]);
     const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
     const navigate = useNavigate();
 
-    const createParticle = useCallback((startX, startY, pathLength) => ({
+    const createParticle = useCallback((startX: number, startY: number, pathLength: number) => ({
         x: startX,
         y: startY,
         speed: 0.5 + Math.random() * 0.5,
         progress: 0,
         pathLength,
         size: 1.5 + Math.random() * 2,
-        hue: 160 + Math.random() * 40,
+        hue: 140 + Math.random() * 20,
         velocityX: 0,
         velocityY: 0
     }), []);
 
-    const handleMouseMove = useCallback((e) => {
-        const rect = canvasRef.current.getBoundingClientRect();
-        setMousePos({
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top
-        });
+    const handleMouseMove = useCallback((e: React.MouseEvent) => {
+        const rect = canvasRef.current?.getBoundingClientRect();
+        if (rect) {
+            setMousePos({
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            });
+        }
     }, []);
 
     const handleMouseLeave = useCallback(() => {
@@ -38,7 +40,7 @@ const BioNav = () => {
             if (next.has(id)) {
                 next.delete(id);
             } else {
-                next.clear(); // Clear other open sections
+                next.clear();
                 next.add(id);
             }
             return next;
@@ -86,8 +88,12 @@ const BioNav = () => {
 
     useEffect(() => {
         const canvas = canvasRef.current;
+        if (!canvas) return;
+
         const ctx = canvas.getContext('2d');
-        let animationFrame;
+        if (!ctx) return;
+
+        let animationFrame: number;
 
         const updateCanvasSize = () => {
             canvas.width = window.innerWidth;
@@ -167,13 +173,13 @@ const BioNav = () => {
             }
         } else {
             navigate(path);
-            setExpandedSections(new Set()); // Close any open dropdowns
+            setExpandedSections(new Set());
         }
     }, [navigate, toggleSection, expandedSections]);
 
     return (
         <div
-            className="fixed top-0 w-full bg-slate-900/95 backdrop-blur-sm text-white z-50"
+            className="fixed top-0 w-full bg-background-dark/95 backdrop-blur-sm text-text-light z-50"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
@@ -190,10 +196,11 @@ const BioNav = () => {
                         onClick={() => handleNavigation('/')}
                         className="relative group transition-transform hover:scale-105"
                     >
-                        <div className="text-3xl font-bold tracking-tight bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                            NaturityAI
+                        <div className="text-3xl font-bold tracking-tight bg-gradient-to-r from-primary-light to-secondary bg-clip-text text-transparent">
+                            <span className="font-cabinet">Naturity</span>
+                            <span className="font-familjen">AI</span>
                         </div>
-                        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary-light/20 to-secondary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
                     </button>
 
                     <div className="ml-16 flex space-x-12">
@@ -207,10 +214,10 @@ const BioNav = () => {
                                             handleNavigation(item.path);
                                         }
                                     }}
-                                    className={`px-6 py-2.5 rounded-full transition-all duration-300 text-lg font-bold
+                                    className={`px-6 py-2.5 rounded-full transition-all duration-300 text-lg font-inter font-medium
                                         ${expandedSections.has(item.id)
-                                        ? 'bg-gradient-to-r from-emerald-500 to-cyan-500 text-white shadow-lg'
-                                        : 'text-gray-300 hover:text-white'
+                                        ? 'bg-gradient-to-r from-primary to-primary-light text-text-light shadow-lg'
+                                        : 'text-accent-light hover:text-text-light'
                                     }`}
                                 >
                                     {item.name}
@@ -218,16 +225,13 @@ const BioNav = () => {
 
                                 {item.children && expandedSections.has(item.id) && (
                                     <div
-                                        className="absolute top-full left-0 mt-2 w-64 bg-slate-800/90 backdrop-blur-sm rounded-lg shadow-xl overflow-hidden border border-slate-700"
-                                        style={{
-                                            animation: 'cellDivide 0.3s ease-out'
-                                        }}
+                                        className="absolute top-full left-0 mt-2 w-64 bg-background-dark/90 backdrop-blur-sm rounded-lg shadow-xl overflow-hidden border border-primary"
                                     >
                                         {item.children.map(child => (
                                             <button
                                                 key={child.id}
                                                 onClick={() => handleNavigation(child.path)}
-                                                className="block w-full px-6 py-3.5 text-left text-lg font-bold text-gray-300 hover:bg-slate-700/70 hover:text-white transition-colors"
+                                                className="block w-full px-6 py-3.5 text-left text-lg font-inter font-medium text-accent-light hover:bg-primary/70 hover:text-text-light transition-colors"
                                             >
                                                 {child.name}
                                             </button>
@@ -239,19 +243,6 @@ const BioNav = () => {
                     </div>
                 </div>
             </div>
-
-            <style jsx>{`
-                @keyframes cellDivide {
-                    from {
-                        transform: scale(0.95) translateY(-10px);
-                        opacity: 0;
-                    }
-                    to {
-                        transform: scale(1) translateY(0);
-                        opacity: 1;
-                    }
-                }
-            `}</style>
         </div>
     );
 };
