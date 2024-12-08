@@ -7,40 +7,41 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Primary colors
+        // Primary colors - Using emerald tones from the navbar
         primary: {
-          DEFAULT: '#2D6A4F', // Main brand color
-          light: '#40916C',   // Lighter variation
-          dark: '#1B4332',    // Darker variation
+          DEFAULT: '#10B981', // Emerald-500
+          light: '#34D399',   // Emerald-400
+          dark: '#065F46',    // Darker emerald for better contrast
         },
-        // Secondary colors
+        // Secondary colors - Using cyan tones from the navbar
         secondary: {
-          DEFAULT: '#40916C',
-          light: '#74C69D',
-          dark: '#2D6A4F',
+          DEFAULT: '#06B6D4', // Cyan-500
+          light: '#22D3EE',   // Cyan-400
+          dark: '#0891B2',    // Cyan-600
         },
-        // Accent colors
+        // Accent colors - Lighter variations for contrast
         accent: {
-          DEFAULT: '#95D5B2',
-          light: '#B7E4C7',
-          dark: '#74C69D',
+          DEFAULT: '#A5F3FC', // Cyan-200
+          light: '#ECFDF5',   // Emerald-50 for better contrast on dark backgrounds
+          dark: '#67E8F9',    // Cyan-300
         },
-        // Background colors
+        // Background colors - Using slate with higher contrast
         background: {
-          DEFAULT: '#F8FAF9',
-          alt: '#E9F1EE',
+          DEFAULT: '#F8FAFC', // Slate-50
+          alt: '#F1F5F9',     // Slate-100
+          dark: '#1E293B',    // Slate-800 for dark sections
         },
-        // Text colors
+        // Text colors - Ensuring readability
         text: {
-          DEFAULT: '#1B4332',
-          light: '#2D6A4F',
-          muted: '#6B7280',
+          DEFAULT: '#0F172A', // Slate-900
+          light: '#F8FAFC',   // Slate-50 for dark backgrounds
+          muted: '#475569',   // Slate-600 for better contrast
         },
-        // Utility colors
-        error: '#BC4749',
-        success: '#2D6A4F',
-        warning: '#F9C74F',
-        info: '#4F7CAC',
+        // Utility colors - Maintained but adjusted for consistency
+        error: '#EF4444',     // Red-500
+        success: '#10B981',   // Emerald-500
+        warning: '#F59E0B',   // Amber-500
+        info: '#3B82F6',      // Blue-500
       },
     },
   },
