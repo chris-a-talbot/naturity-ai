@@ -11,17 +11,17 @@ import './styles/Home.css';
 const upcomingWorkshops = [
     {
         title: "Introduction to AI in Ecological Research",
-        date: "Spring 2025",
+        date: "Winter 2025",
         type: "Workshop",
         capacity: "15 participants",
-        status: "Registration Opening Soon"
+        status: "Registration Closed - Coming Soon"
     },
     {
-        title: "AI Tools for Biological Data Analysis",
-        date: "Summer 2025",
+        title: "Introduction to AI in Population Genetics",
+        date: "Winter 2025",
         type: "Seminar",
         capacity: "15 participants",
-        status: "Coming Soon"
+        status: "Registration Closed - Coming Soon"
     }
 ];
 
