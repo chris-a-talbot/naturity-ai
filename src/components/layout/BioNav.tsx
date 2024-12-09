@@ -58,6 +58,12 @@ const BioNav = () => {
             priority: 1
         },
         {
+            id: 'about',
+            name: 'About',
+            path: '/about',
+            priority: 5
+        },
+        {
             id: 'learn',
             name: 'Learn',
             path: '/learn',
@@ -80,12 +86,6 @@ const BioNav = () => {
             name: 'Community',
             path: '/community',
             priority: 4
-        },
-        {
-            id: 'about',
-            name: 'About',
-            path: '/about',
-            priority: 5
         },
         {
             id: 'blog',
@@ -231,13 +231,13 @@ const BioNav = () => {
                     <div className="flex-1">
                         <button
                             onClick={() => handleNavigation('/')}
-                            className="relative group transition-transform hover:scale-105"
+                            className="relative group transition-all duration-300 transform hover:scale-105"
                         >
                             <div className="text-3xl font-bold tracking-tight bg-gradient-to-r from-primary-light to-secondary bg-clip-text text-transparent">
                                 <span className="font-cabinet">Naturity</span>
                                 <span className="font-familjen">AI</span>
                             </div>
-                            <div className="absolute inset-0 bg-gradient-to-r from-primary-light/20 to-secondary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-primary-light/20 to-secondary/20 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-300" />
                         </button>
                     </div>
 
@@ -252,24 +252,27 @@ const BioNav = () => {
                                             handleNavigation(item.path);
                                         }
                                     }}
-                                    className={`px-4 py-2 rounded-full transition-all duration-300 text-lg font-inter font-medium
+                                    className={`group px-4 py-2 rounded-full transition-all duration-300 text-lg font-inter font-medium relative overflow-hidden
                                         ${expandedSections.has(item.id)
                                         ? 'bg-gradient-to-r from-primary to-primary-light text-text-light shadow-lg'
                                         : 'text-accent-light hover:text-text-light'
                                     }`}
                                 >
-                                    {item.name}
+                                    <span className="relative z-10">{item.name}</span>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary-light/20 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-105" />
+                                    <div className="absolute -inset-1 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-full blur opacity-0 group-hover:opacity-100 transition-all duration-300" />
                                 </button>
 
                                 {item.children && expandedSections.has(item.id) && (
-                                    <div className="absolute top-full left-0 mt-2 w-64 bg-background-dark/90 backdrop-blur-sm rounded-lg shadow-xl overflow-hidden border border-primary">
+                                    <div className="absolute top-full left-0 mt-2 w-64 bg-background-dark/90 backdrop-blur-sm rounded-lg shadow-xl overflow-hidden border border-primary transform origin-top transition-all duration-300">
                                         {item.children.map(child => (
                                             <button
                                                 key={child.id}
                                                 onClick={() => handleNavigation(child.path)}
-                                                className="block w-full px-6 py-3.5 text-left text-lg font-inter font-medium text-accent-light hover:bg-primary/70 hover:text-text-light transition-colors"
+                                                className="group block w-full px-6 py-3.5 text-left text-lg font-inter font-medium text-accent-light hover:bg-primary/70 hover:text-text-light transition-all duration-300 relative overflow-hidden"
                                             >
-                                                {child.name}
+                                                <span className="relative z-10">{child.name}</span>
+                                                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary-light/20 opacity-0 group-hover:opacity-100 transition-all duration-300" />
                                             </button>
                                         ))}
                                     </div>
@@ -282,7 +285,7 @@ const BioNav = () => {
                         {getHamburgerNavItems().length > 0 && (
                             <button
                                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="p-2 text-accent-light hover:text-text-light transition-colors"
+                                className="p-2 text-accent-light hover:text-text-light transition-all duration-300 transform hover:scale-110"
                                 aria-label="Toggle menu"
                             >
                                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -292,7 +295,7 @@ const BioNav = () => {
                 </div>
 
                 {isMenuOpen && getHamburgerNavItems().length > 0 && (
-                    <div className="absolute top-20 left-0 right-0 bg-background-dark/95 backdrop-blur-sm border-t border-primary">
+                    <div className="absolute top-20 left-0 right-0 bg-background-dark/95 backdrop-blur-sm border-t border-primary transform origin-top transition-all duration-300">
                         {getHamburgerNavItems().map(item => (
                             <div key={item.id}>
                                 <button
@@ -303,13 +306,14 @@ const BioNav = () => {
                                             handleNavigation(item.path);
                                         }
                                     }}
-                                    className={`w-full px-6 py-4 text-left text-lg font-inter font-medium
+                                    className={`group w-full px-6 py-4 text-left text-lg font-inter font-medium relative overflow-hidden
                                         ${expandedSections.has(item.id)
                                         ? 'bg-primary/20 text-text-light'
                                         : 'text-accent-light hover:bg-primary/10 hover:text-text-light'
                                     }`}
                                 >
-                                    {item.name}
+                                    <span className="relative z-10">{item.name}</span>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary-light/10 opacity-0 group-hover:opacity-100 transition-all duration-300" />
                                 </button>
 
                                 {item.children && expandedSections.has(item.id) && (
@@ -318,9 +322,10 @@ const BioNav = () => {
                                             <button
                                                 key={child.id}
                                                 onClick={() => handleNavigation(child.path)}
-                                                className="block w-full px-12 py-3 text-left text-lg font-inter font-medium text-accent-light hover:bg-primary/10 hover:text-text-light"
+                                                className="group block w-full px-12 py-3 text-left text-lg font-inter font-medium text-accent-light hover:bg-primary/10 hover:text-text-light transition-all duration-300 relative overflow-hidden"
                                             >
-                                                {child.name}
+                                                <span className="relative z-10">{child.name}</span>
+                                                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary-light/10 opacity-0 group-hover:opacity-100 transition-all duration-300" />
                                             </button>
                                         ))}
                                     </div>
