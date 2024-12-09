@@ -1,0 +1,222 @@
+/* Base layout */
+.page-container {
+    @apply min-h-screen bg-gradient-to-b from-background-alt to-background;
+}
+
+/* Header styles */
+.learn-header {
+    @apply pt-16 pb-12 text-center;
+}
+
+.header-content {
+    @apply max-w-4xl mx-auto px-4;
+}
+
+.header-title {
+    @apply text-5xl font-fraunces font-bold text-primary-dark mb-6;
+}
+
+.header-description {
+    @apply text-xl text-text-muted font-inter mb-8;
+}
+
+/* Learning paths section */
+.learning-paths {
+    @apply pb-20;
+}
+
+.container {
+    @apply max-w-6xl mx-auto px-4;
+}
+
+.path-section {
+    @apply mb-16;
+}
+
+.path-header {
+    @apply mb-8;
+}
+
+.path-title {
+    @apply text-3xl font-fraunces font-bold text-primary-dark mb-2;
+}
+
+.path-description {
+    @apply text-text-muted font-inter;
+}
+
+.courses-grid {
+    @apply grid md:grid-cols-2 gap-6;
+}
+
+/* Course card styles */
+.course-card {
+    @apply p-6 rounded-xl bg-background shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1;
+}
+
+.course-card-content {
+    @apply flex items-start gap-4;
+}
+
+.course-info {
+    @apply flex-1;
+}
+
+.course-title {
+    @apply text-xl font-familjen font-semibold text-primary-dark mb-2;
+}
+
+.course-description {
+    @apply text-text-muted font-inter mb-4;
+}
+
+.course-meta {
+    @apply flex items-center gap-4 mb-3;
+}
+
+.module-count {
+    @apply text-sm font-inter text-text-muted;
+}
+
+.start-learning {
+    @apply flex items-center gap-1 text-sm font-inter text-primary;
+}
+
+/* Progress bar */
+.progress-bar-container {
+    @apply w-full h-2 bg-accent-light rounded-full overflow-hidden;
+}
+
+.progress-bar {
+    @apply h-full bg-primary transition-all duration-300;
+}
+
+/* Progress overview section */
+.progress-overview {
+    @apply mb-16;
+}
+
+.progress-card {
+    @apply bg-primary-dark rounded-xl p-8 text-white;
+}
+
+.progress-header {
+    @apply flex items-center gap-4 mb-6;
+}
+
+.progress-title {
+    @apply text-2xl font-familjen font-semibold mb-1;
+}
+
+.progress-subtitle {
+    @apply text-accent-light font-inter;
+}
+
+.stats-grid {
+    @apply grid md:grid-cols-3 gap-6;
+}
+
+.stat-card {
+    @apply bg-background/10 rounded-lg p-4;
+}
+
+.stat-value {
+    @apply text-4xl font-familjen font-bold mb-2;
+}
+
+.stat-label {
+    @apply text-sm font-inter text-accent-light;
+}
+
+/* Modal styles */
+.modal-overlay {
+    @apply fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50;
+}
+
+.modal-content {
+    @apply bg-background rounded-xl p-8 max-w-2xl w-full;
+}
+
+.modal-header {
+    @apply flex items-start gap-4 mb-6;
+}
+
+.modal-title-content {
+    @apply flex-1;
+}
+
+.modal-title {
+    @apply text-2xl font-familjen font-semibold text-primary-dark mb-2;
+}
+
+.modal-description {
+    @apply text-text-muted font-inter mb-4;
+}
+
+.course-details {
+    @apply bg-background-alt rounded-lg p-4 mb-6;
+}
+
+.details-title {
+    @apply font-familjen font-semibold text-primary-dark mb-2;
+}
+
+.details-list {
+    @apply space-y-2 text-text-muted font-inter;
+}
+
+.details-list li {
+    @apply flex items-center gap-2;
+}
+
+.modal-actions {
+    @apply flex justify-end gap-4;
+}
+
+/* Button styles */
+.btn-primary {
+    @apply bg-primary text-white hover:bg-primary-light px-6 py-3 rounded-lg inline-flex items-center gap-2 font-familjen font-medium transition-all duration-300;
+}
+
+.btn-secondary {
+    @apply px-6 py-3 rounded-lg inline-flex items-center gap-2 font-familjen font-medium transition-all duration-300 border-2 border-primary text-primary hover:bg-primary hover:text-white;
+}
+
+/* Icon container */
+.icon-container {
+    @apply w-12 h-12 rounded-full bg-accent flex items-center justify-center transition-transform duration-300 hover:scale-110;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-in {
+    animation: slideIn 0.6s ease-out forwards;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }

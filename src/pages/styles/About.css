@@ -1,0 +1,116 @@
+/* Hero section */
+.about-hero {
+    @apply mx-auto py-24 text-center;
+}
+
+.about-hero-title {
+    @apply text-6xl font-fraunces font-bold text-primary-dark mb-8;
+}
+
+.about-hero-description {
+    @apply text-xl mb-8 text-text-muted font-inter;
+}
+
+/* Vision section */
+.vision-section {
+    @apply py-20 bg-background;
+}
+
+.vision-title {
+    @apply text-4xl font-fraunces font-bold text-primary-dark mb-8;
+}
+
+.vision-content {
+    @apply text-lg leading-relaxed text-text font-inter max-w-none;
+}
+
+.vision-content p {
+    @apply mb-6 last:mb-0;
+}
+
+/* Dual approach section */
+.approach-section {
+    @apply py-20 bg-background-alt;
+}
+
+.approach-header {
+    @apply text-4xl font-fraunces font-bold text-center text-primary-dark mb-16;
+}
+
+.approach-side {
+    @apply space-y-8;
+}
+
+.approach-icon-header {
+    @apply text-center mb-12;
+}
+
+.approach-side-title {
+    @apply text-2xl font-familjen font-semibold text-primary-dark;
+}
+
+.approach-item {
+    @apply p-6 bg-background rounded-xl shadow-sm;
+}
+
+.approach-item-title {
+    @apply font-familjen font-semibold mb-2 text-primary-dark;
+}
+
+.approach-item-description {
+    @apply text-text font-inter;
+}
+
+/* Leadership section */
+.leadership-section {
+    @apply py-20 bg-background;
+}
+
+.leadership-title {
+    @apply text-4xl font-fraunces font-bold text-center text-primary-dark mb-16;
+}
+
+.leader-card {
+    @apply text-center;
+}
+
+.leader-image {
+    @apply w-48 h-48 rounded-full mx-auto mb-6 object-cover;
+}
+
+.leader-name {
+    @apply text-2xl font-familjen font-semibold mb-2 text-primary-dark;
+}
+
+.leader-role {
+    @apply text-text-muted font-inter mb-6;
+}
+
+.leader-bio {
+    @apply text-text font-inter space-y-4;
+}
+
+/* Contact section */
+.contact-section {
+    @apply py-20 bg-background-alt;
+}
+
+.contact-title {
+    @apply text-4xl font-fraunces font-bold text-primary-dark mb-8;
+}
+
+.contact-description {
+    @apply text-xl mb-12 text-text-muted font-inter;
+}
+
+.contact-button {
+    @apply px-6 py-3 rounded-lg inline-flex items-center gap-2 font-familjen font-medium;
+}
+
+.contact-button-primary {
+    @apply bg-primary hover:bg-primary-light text-white;
+}
+
+.contact-button-secondary {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors;
+}

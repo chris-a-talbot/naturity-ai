@@ -1,114 +1,104 @@
-/* Hero Section */
-.hero-link {
-    transition: all 0.2s ease-in-out;
-}
+@tailwind components;
+@tailwind utilities;
 
-.hero-link:hover {
-    transform: translateX(4px);
-}
-
-/* Feature Cards */
-.feature-card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.feature-icon-container {
-    transition: transform 0.2s ease;
-}
-
-.feature-card:hover .feature-icon-container {
-    transform: scale(1.1);
-}
-
-/* Resource Cards */
-.resource-card {
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.resource-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.resource-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-}
-
-.resource-card:hover::after {
-    transform: scaleX(1);
-}
-
-/* CTA Button */
-.cta-button {
-    transition: all 0.2s ease;
-}
-
-.cta-button:hover {
-    transform: translateX(4px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Footer Links */
-.footer-link {
-    position: relative;
-    transition: opacity 0.2s ease;
-}
-
-.footer-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: currentColor;
-    transform: scaleX(0);
-    transition: transform 0.2s ease;
-}
-
-.footer-link:hover::after {
-    transform: scaleX(1);
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+@layer components {
+    /* Hero section */
+    .hero {
+        @apply py-24 text-center;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+    .hero-title {
+        @apply text-6xl font-fraunces font-bold text-primary-dark mb-8;
+    }
+
+    .hero-description {
+        @apply text-xl mb-8 text-text-muted;
+    }
+
+    /* Program cards */
+    .program-card {
+        @apply bg-background rounded-xl p-6 shadow-sm;
+    }
+
+    .program-type {
+        @apply mb-2 text-accent-dark font-familjen;
+    }
+
+    .program-title {
+        @apply text-xl font-familjen font-semibold mb-3 text-primary-dark;
+    }
+
+    .program-details {
+        @apply text-text-muted font-inter mb-2;
+    }
+
+    .program-status {
+        @apply text-primary font-inter font-medium;
+    }
+
+    /* Approach section */
+    .approach-card {
+        @apply p-8 bg-background rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1;
+    }
+
+    .approach-icon {
+        @apply w-16 h-16 mb-6 bg-accent rounded-full flex items-center justify-center;
+    }
+
+    .approach-title {
+        @apply text-2xl font-familjen font-semibold mb-4 text-primary-dark;
+    }
+
+    .approach-description {
+        @apply text-text font-inter mb-4;
+    }
+
+    /* Learning paths */
+    .path-card {
+        @apply block p-8 rounded-xl bg-background shadow-sm;
+    }
+
+    .path-card:hover {
+        @apply shadow-md -translate-y-1;
+    }
+
+    .path-title {
+        @apply text-xl font-familjen font-semibold mb-4 text-primary-dark;
+    }
+
+    .path-description {
+        @apply text-text font-inter mb-4;
+    }
+
+    .path-features {
+        @apply text-sm text-text-muted font-inter;
+    }
+
+    /* CTA section */
+    .cta-section {
+        @apply py-24 bg-primary-dark text-text-light;
+    }
+
+    .cta-title {
+        @apply text-4xl font-fraunces font-bold mb-8;
+    }
+
+    .cta-description {
+        @apply text-xl font-inter opacity-90 mb-10;
+    }
+
+    .cta-button-light {
+        @apply bg-text-light text-primary-dark hover:bg-accent-light;
+    }
+
+    .cta-button-outline {
+        @apply border-2 border-text-light text-text-light hover:bg-text-light hover:text-primary-dark;
     }
 }
 
-.animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
-}
-
-/* Animation delays for staggered entrance */
-.delay-1 { animation-delay: 0.1s; }
-.delay-2 { animation-delay: 0.2s; }
-.delay-3 { animation-delay: 0.3s; }
-.delay-4 { animation-delay: 0.4s; }
-
-/* CSS Variables for brand colors */
-:root {
-    --primary-color: #10B981;
-    --secondary-color: #06B6D4;
+@layer utilities {
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
 }

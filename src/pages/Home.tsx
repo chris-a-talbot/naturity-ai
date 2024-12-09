@@ -1,10 +1,10 @@
 import {
-    ArrowRight, Sprout, Brain, Users, School,
-    Building2, GraduationCap, Shield, Instagram,
-    Twitter, Github, ExternalLink, BookOpen,
-    Library, Presentation
+    ArrowRight, Brain, Users,
+    Building2, GraduationCap, Shield,
+    ExternalLink, Presentation
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import './styles/pages.css';
 import './styles/Home.css';
 
 // Sample data for upcoming workshops
@@ -27,27 +27,27 @@ const upcomingWorkshops = [
 
 const Home = () => {
     return (
-        <div className="min-h-screen bg-gradient-to-b from-background-alt to-background">
+        <div className="page-container">
             {/* Hero Section */}
-            <header className="mx-auto py-24 text-center animate-fade-in">
+            <header className="hero">
                 <div className="max-w-4xl mx-auto px-4">
-                    <h1 className="text-6xl font-fraunces font-bold text-primary-dark mb-8">
+                    <h1 className="hero-title animate-fade-in">
                         Helping biologists use AI to explore and protect the natural world
                     </h1>
-                    <p className="text-xl mb-8 text-text-muted">
+                    <p className="hero-description animate-fade-in [animation-delay:200ms]">
                         Join our upcoming workshops and be part of the first wave of biologists
                         bridging the gap between natural sciences and artificial intelligence.
                     </p>
-                    <div className="flex justify-center gap-4">
+                    <div className="flex justify-center gap-4 animate-fade-in [animation-delay:400ms]">
                         <Link
                             to="/workshops"
-                            className="bg-primary hover:bg-primary-light text-white px-6 py-3 rounded-lg inline-flex items-center gap-2 text-lg font-familjen font-medium"
+                            className="btn-base btn-primary"
                         >
                             View Upcoming Workshops <Presentation size={20}/>
                         </Link>
                         <Link
                             to="/about"
-                            className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg inline-flex items-center gap-2 text-lg font-familjen font-medium transition-colors"
+                            className="btn-base btn-secondary"
                         >
                             Learn More <ArrowRight size={20}/>
                         </Link>
@@ -56,30 +56,31 @@ const Home = () => {
             </header>
 
             {/* Upcoming Programs Section */}
-            <section className="py-20 bg-background-alt">
+            <section className="section section-alt">
                 <div className="max-w-6xl mx-auto px-4">
-                    <h2 className="text-4xl font-fraunces font-bold text-center text-primary-dark mb-4">
+                    <h2 className="text-4xl font-fraunces font-bold text-center text-primary-dark mb-4 animate-fade-in">
                         Launching Spring 2025
                     </h2>
-                    <p className="text-center font-inter text-text-muted mb-12 max-w-2xl mx-auto">
+                    <p className="text-center font-inter text-text-muted mb-12 max-w-2xl mx-auto animate-fade-in [animation-delay:200ms]">
                         Be among the first to participate in our hands-on workshops
                     </p>
                     <div className="grid md:grid-cols-2 gap-8">
                         {upcomingWorkshops.map((workshop, index) => (
                             <div
                                 key={workshop.title}
-                                className={`bg-background rounded-xl p-6 shadow-sm animate-fade-in delay-${index + 1}`}
+                                className={`program-card animate-fade-in`}
+                                style={{ animationDelay: `${(index + 2) * 200}ms` }}
                             >
-                                <div className="mb-2 text-accent-dark font-familjen">
+                                <div className="program-type">
                                     {workshop.type} • {workshop.date}
                                 </div>
-                                <h3 className="text-xl font-familjen font-semibold mb-3 text-primary-dark">
+                                <h3 className="program-title">
                                     {workshop.title}
                                 </h3>
-                                <div className="text-text-muted font-inter mb-2">
+                                <div className="program-details">
                                     {workshop.capacity}
                                 </div>
-                                <div className="text-primary font-inter font-medium">
+                                <div className="program-status">
                                     {workshop.status}
                                 </div>
                             </div>
@@ -89,9 +90,9 @@ const Home = () => {
             </section>
 
             {/* Our Approach */}
-            <section className="py-20 bg-background">
+            <section className="section">
                 <div className="max-w-6xl mx-auto px-4">
-                    <h2 className="text-4xl font-fraunces font-bold text-center text-primary-dark mb-16">
+                    <h2 className="text-4xl font-fraunces font-bold text-center text-primary-dark mb-16 animate-fade-in">
                         Our Approach
                     </h2>
                     <div className="grid md:grid-cols-3 gap-12">
@@ -117,13 +118,14 @@ const Home = () => {
                         ].map(({icon: Icon, title, description, example}, index) => (
                             <div
                                 key={title}
-                                className={`p-8 bg-background rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 animate-fade-in delay-${index + 1}`}
+                                className="approach-card animate-fade-in"
+                                style={{ animationDelay: `${(index + 1) * 200}ms` }}
                             >
-                                <div className="w-16 h-16 mb-6 bg-accent rounded-full flex items-center justify-center">
+                                <div className="approach-icon">
                                     <Icon className="text-primary-dark" size={32}/>
                                 </div>
-                                <h3 className="text-2xl font-familjen font-semibold mb-4 text-primary-dark">{title}</h3>
-                                <p className="text-text font-inter mb-4">{description}</p>
+                                <h3 className="approach-title">{title}</h3>
+                                <p className="approach-description">{description}</p>
                                 <div className="text-sm font-inter text-text-muted">
                                     {example}
                                 </div>
@@ -134,12 +136,12 @@ const Home = () => {
             </section>
 
             {/* Learning Paths */}
-            <section className="py-20 bg-background-alt">
+            <section className="section section-alt">
                 <div className="max-w-6xl mx-auto px-4">
-                    <h2 className="text-4xl font-fraunces font-bold text-center text-primary-dark mb-4">
+                    <h2 className="text-4xl font-fraunces font-bold text-center text-primary-dark mb-4 animate-fade-in">
                         Find Your Learning Path
                     </h2>
-                    <p className="text-center font-inter text-text-muted mb-12 max-w-2xl mx-auto">
+                    <p className="text-center font-inter text-text-muted mb-12 max-w-2xl mx-auto animate-fade-in [animation-delay:200ms]">
                         Resources and workshops tailored to your experience level
                     </p>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -169,12 +171,13 @@ const Home = () => {
                             <Link
                                 key={path}
                                 to={path}
-                                className={`block p-8 rounded-xl bg-background shadow-sm hover:shadow-md hover:-translate-y-1 transition-all animate-fade-in delay-${index + 1}`}
+                                className="path-card hover-lift animate-fade-in"
+                                style={{ animationDelay: `${(index + 2) * 200}ms` }}
                             >
                                 <Icon className="text-primary-dark mb-6" size={32}/>
-                                <h3 className="text-xl font-familjen font-semibold mb-4 text-primary-dark">{title}</h3>
-                                <p className="text-text font-inter mb-4">{description}</p>
-                                <ul className="text-sm text-text-muted font-inter">
+                                <h3 className="path-title">{title}</h3>
+                                <p className="path-description">{description}</p>
+                                <ul className="path-features">
                                     {features.map((feature) => (
                                         <li key={feature} className="mb-1">• {feature}</li>
                                     ))}
@@ -186,25 +189,25 @@ const Home = () => {
             </section>
 
             {/* Call to Action */}
-            <section className="py-24 bg-primary-dark text-text-light">
+            <section className="cta-section animate-fade-in">
                 <div className="max-w-4xl mx-auto px-4 text-center">
-                    <h2 className="text-4xl font-fraunces font-bold mb-8">
+                    <h2 className="cta-title">
                         Join Our Initial Programs
                     </h2>
-                    <p className="text-xl font-inter opacity-90 mb-10 max-w-2xl mx-auto">
+                    <p className="cta-description max-w-2xl mx-auto">
                         Be part of our founding cohort as we launch our first workshops
                         designed specifically for biological sciences.
                     </p>
                     <div className="flex justify-center gap-4">
                         <Link
                             to="/workshops"
-                            className="bg-text-light text-primary-dark px-8 py-4 rounded-lg inline-flex items-center gap-2 text-lg font-familjen font-medium hover:bg-accent-light"
+                            className="btn-base cta-button-light"
                         >
                             View Workshops <ArrowRight size={24}/>
                         </Link>
                         <Link
                             to="/about"
-                            className="border-2 border-text-light text-text-light px-8 py-4 rounded-lg inline-flex items-center gap-2 text-lg font-familjen font-medium hover:bg-text-light hover:text-primary-dark transition-colors"
+                            className="btn-base cta-button-outline"
                         >
                             About Us <ExternalLink size={24}/>
                         </Link>

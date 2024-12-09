@@ -1,32 +1,35 @@
 import {
-    Dna, Shield, Scale, Mail,
-    Github, Users, GraduationCap,
-    LineChart, Database, Rocket
+    Mail,
+    Github,
+    Scale,
+    Rocket
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import './styles/pages.css';
+import './styles/About.css';
 
 const About = () => {
     return (
-        <div className="min-h-screen bg-gradient-to-b from-background-alt to-background">
+        <div className="page-container">
             {/* Hero Section */}
-            <header className="mx-auto py-24 text-center">
+            <header className="about-hero">
                 <div className="max-w-4xl mx-auto px-4">
-                    <h1 className="text-6xl font-fraunces font-bold text-primary-dark mb-8">
+                    <h1 className="about-hero-title animate-fade-in">
                         From DNA to Deep Learning
                     </h1>
-                    <p className="text-xl mb-8 text-text-muted font-inter">
+                    <p className="about-hero-description animate-fade-in delay-1">
                         Empowering biologists to innovate with AI while ensuring ethical and sustainable practices
                     </p>
                 </div>
             </header>
 
             {/* Vision Section */}
-            <section className="py-20 bg-background">
+            <section className="vision-section">
                 <div className="max-w-3xl mx-auto px-4">
-                    <h2 className="text-4xl font-fraunces font-bold text-primary-dark mb-8">
+                    <h2 className="vision-title">
                         Our Vision
                     </h2>
-                    <div className="prose prose-lg text-text font-inter">
+                    <div className="vision-content">
                         <p className="mb-6">
                             The integration of AI in biological sciences presents both unprecedented
                             opportunities and significant responsibilities. As a computational biologist
@@ -50,44 +53,44 @@ const About = () => {
             </section>
 
             {/* Dual Approach Section */}
-            <section className="py-20 bg-background-alt">
+            <section className="approach-section">
                 <div className="max-w-6xl mx-auto px-4">
-                    <h2 className="text-4xl font-fraunces font-bold text-center text-primary-dark mb-16">
+                    <h2 className="approach-header">
                         Our Dual Approach
                     </h2>
                     <div className="grid md:grid-cols-2 gap-12">
                         {/* Innovation Side */}
-                        <div className="space-y-8">
-                            <div className="text-center mb-12">
+                        <div className="approach-side">
+                            <div className="approach-icon-header">
                                 <Rocket className="w-16 h-16 text-primary-dark mx-auto mb-4"/>
-                                <h3 className="text-2xl font-familjen font-semibold text-primary-dark">
+                                <h3 className="approach-side-title">
                                     Accelerating Innovation
                                 </h3>
                             </div>
                             <div className="space-y-6">
-                                <div className="p-6 bg-background rounded-xl shadow-sm">
-                                    <h4 className="font-familjen font-semibold mb-2 text-primary-dark">
+                                <div className="approach-item">
+                                    <h4 className="approach-item-title">
                                         Enhanced Productivity
                                     </h4>
-                                    <p className="text-text font-inter">
+                                    <p className="approach-item-description">
                                         Streamline research workflows and accelerate discovery through
                                         AI-powered tools and automation
                                     </p>
                                 </div>
-                                <div className="p-6 bg-background rounded-xl shadow-sm">
-                                    <h4 className="font-familjen font-semibold mb-2 text-primary-dark">
+                                <div className="approach-item">
+                                    <h4 className="approach-item-title">
                                         Faster Learning
                                     </h4>
-                                    <p className="text-text font-inter">
+                                    <p className="approach-item-description">
                                         Leverage AI to enhance understanding and master new concepts
                                         more efficiently
                                     </p>
                                 </div>
-                                <div className="p-6 bg-background rounded-xl shadow-sm">
-                                    <h4 className="font-familjen font-semibold mb-2 text-primary-dark">
+                                <div className="approach-item">
+                                    <h4 className="approach-item-title">
                                         Advanced Analysis
                                     </h4>
-                                    <p className="text-text font-inter">
+                                    <p className="approach-item-description">
                                         Unlock deeper insights from biological data through
                                         AI-enhanced analysis methods
                                     </p>
@@ -96,37 +99,37 @@ const About = () => {
                         </div>
 
                         {/* Responsibility Side */}
-                        <div className="space-y-8">
-                            <div className="text-center mb-12">
+                        <div className="approach-side">
+                            <div className="approach-icon-header">
                                 <Scale className="w-16 h-16 text-primary-dark mx-auto mb-4"/>
-                                <h3 className="text-2xl font-familjen font-semibold text-primary-dark">
+                                <h3 className="approach-side-title">
                                     Ensuring Responsibility
                                 </h3>
                             </div>
                             <div className="space-y-6">
-                                <div className="p-6 bg-background rounded-xl shadow-sm">
-                                    <h4 className="font-familjen font-semibold mb-2 text-primary-dark">
+                                <div className="approach-item">
+                                    <h4 className="approach-item-title">
                                         Ethical Practice
                                     </h4>
-                                    <p className="text-text font-inter">
+                                    <p className="approach-item-description">
                                         Develop frameworks to prevent bias and ensure inclusive,
                                         equitable research practices
                                     </p>
                                 </div>
-                                <div className="p-6 bg-background rounded-xl shadow-sm">
-                                    <h4 className="font-familjen font-semibold mb-2 text-primary-dark">
+                                <div className="approach-item">
+                                    <h4 className="approach-item-title">
                                         Environmental Impact
                                     </h4>
-                                    <p className="text-text font-inter">
+                                    <p className="approach-item-description">
                                         Prioritize sustainable AI practices that support environmental
                                         conservation goals
                                     </p>
                                 </div>
-                                <div className="p-6 bg-background rounded-xl shadow-sm">
-                                    <h4 className="font-familjen font-semibold mb-2 text-primary-dark">
+                                <div className="approach-item">
+                                    <h4 className="approach-item-title">
                                         Academic Integrity
                                     </h4>
-                                    <p className="text-text font-inter">
+                                    <p className="approach-item-description">
                                         Maintain rigorous scientific standards while integrating
                                         AI-powered methods
                                     </p>
@@ -138,23 +141,23 @@ const About = () => {
             </section>
 
             {/* Leadership Section */}
-            <section className="py-20 bg-background">
+            <section className="leadership-section">
                 <div className="max-w-4xl mx-auto px-4">
-                    <h2 className="text-4xl font-fraunces font-bold text-center text-primary-dark mb-16">
+                    <h2 className="leadership-title">
                         Leadership
                     </h2>
                     <div className="max-w-2xl mx-auto">
-                        <div className="text-center">
+                        <div className="leader-card">
                             <img
                                 src="/api/placeholder/400/400"
                                 alt="Chris Talbot"
-                                className="w-48 h-48 rounded-full mx-auto mb-6 object-cover"
+                                className="leader-image"
                             />
-                            <h3 className="text-2xl font-familjen font-semibold mb-2 text-primary-dark">
+                            <h3 className="leader-name">
                                 Chris Talbot
                             </h3>
-                            <p className="text-text-muted font-inter mb-6">Founder & CEO</p>
-                            <div className="text-text font-inter space-y-4">
+                            <p className="leader-role">Founder & CEO</p>
+                            <div className="leader-bio">
                                 <p>
                                     Computational biologist specializing in population genetics at the
                                     University of Michigan. B.S. in Ecology & Evolutionary Biology.
@@ -171,18 +174,18 @@ const About = () => {
             </section>
 
             {/* Contact Section */}
-            <section className="py-20 bg-background-alt">
+            <section className="contact-section">
                 <div className="max-w-4xl mx-auto px-4 text-center">
-                    <h2 className="text-4xl font-fraunces font-bold text-primary-dark mb-8">
+                    <h2 className="contact-title">
                         Get in Touch
                     </h2>
-                    <p className="text-xl mb-12 text-text-muted font-inter">
+                    <p className="contact-description">
                         Let's discuss how to advance your research with AI while maintaining ethical excellence
                     </p>
                     <div className="flex flex-wrap justify-center gap-6">
                         <a
                             href="mailto:chris@naturity.ai"
-                            className="bg-primary hover:bg-primary-light text-white px-6 py-3 rounded-lg inline-flex items-center gap-2 font-familjen font-medium"
+                            className="contact-button contact-button-primary"
                         >
                             <Mail size={20}/> Email Chris
                         </a>
@@ -190,7 +193,7 @@ const About = () => {
                             href="https://github.com/NaturityAI"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg inline-flex items-center gap-2 font-familjen font-medium transition-colors"
+                            className="contact-button contact-button-secondary"
                         >
                             <Github size={20}/> GitHub
                         </a>

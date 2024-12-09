@@ -34,8 +34,8 @@ const Community = () => {
             ]
         },
         {
-            title: "Study Groups",
-            description: "Join focused study groups with fellow biologists exploring AI applications",
+            title: "Online Community",
+            description: "Learn together through our learning leaderboard, project showcase, and study groups",
             icon: <Users className="w-8 h-8 text-primary" />,
             link: "#study-groups",
             features: [
@@ -65,30 +65,6 @@ const Community = () => {
             description: "Share code, get reviews, and collaborate on biological AI tools",
             icon: <GitBranch className="w-8 h-8 text-primary-dark" />,
             channels: ["#code-help", "#project-showcase", "#tools-libs"]
-        }
-    ];
-
-    const communityFeatures = [
-        {
-            title: "Learning Leaderboard",
-            description: "Track your progress through interactive challenges and learning milestones",
-            icon: <Trophy className="w-8 h-8 text-primary-dark" />,
-            highlight: "Weekly Challenges",
-            link: "#leaderboard"
-        },
-        {
-            title: "Project Showcase",
-            description: "Share your work and discover innovative AI applications in biology",
-            icon: <Puzzle className="w-8 h-8 text-primary-dark" />,
-            highlight: "Featured Projects",
-            link: "#showcase"
-        },
-        {
-            title: "Impact Tracking",
-            description: "See how your contributions are advancing biological research",
-            icon: <Waypoints className="w-8 h-8 text-primary-dark" />,
-            highlight: "Research Impact Score",
-            link: "#impact"
         }
     ];
 
@@ -182,36 +158,6 @@ const Community = () => {
                                         </li>
                                     ))}
                                 </ul>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Community Features */}
-            <section className="py-20 bg-background">
-                <div className="max-w-6xl mx-auto px-4">
-                    <h2 className="text-4xl font-fraunces font-bold text-center text-primary-dark mb-16">
-                        Community Features
-                    </h2>
-                    <div className="grid md:grid-cols-3 gap-12">
-                        {communityFeatures.map((item, index) => (
-                            <div
-                                key={index}
-                                className={`p-8 bg-background rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 animate-fade-in delay-${index + 1}`}
-                            >
-                                <div className="w-16 h-16 mb-6 bg-accent rounded-full flex items-center justify-center">
-                                    {item.icon}
-                                </div>
-                                <h3 className="text-2xl font-familjen font-semibold mb-4 text-primary-dark">
-                                    {item.title}
-                                </h3>
-                                <p className="text-text font-inter mb-4">
-                                    {item.description}
-                                </p>
-                                <div className="text-sm font-inter text-primary font-medium">
-                                    {item.highlight}
-                                </div>
                             </div>
                         ))}
                     </div>

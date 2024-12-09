@@ -8,8 +8,9 @@ import {
     Star,
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import './styles/Learn.css';
 
-// Type definitions
+// Type definitions remain the same
 interface Course {
     id: string;
     title: string;
@@ -27,7 +28,7 @@ interface CoursePath {
     courses: Course[];
 }
 
-// Updated course data with new structure
+// Course data remains the same
 const coursePaths: CoursePath[] = [
     {
         id: 'core-courses',
@@ -82,13 +83,12 @@ const Learn = () => {
         if (courseId === 'biology-meets-ai') {
             navigate('/courses/prompt-engineering');
         }
-        // Add navigation logic for other courses here
     };
 
     const renderProgressBar = (progress: number) => (
-        <div className="w-full h-2 bg-accent-light rounded-full overflow-hidden">
+        <div className="progress-bar-container">
             <div
-                className="h-full bg-primary transition-all duration-300"
+                className="progress-bar"
                 style={{ width: `${progress}%` }}
             />
         </div>
@@ -100,25 +100,25 @@ const Learn = () => {
 
     const CourseCard: React.FC<CourseCardProps> = ({ course }) => (
         <div
-            className="p-6 rounded-xl bg-background hover:shadow-lg cursor-pointer transition-all duration-300 relative"
+            className="course-card animate-fade-in"
             onClick={() => setSelectedCourse(course)}
         >
-            <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center">
+            <div className="course-card-content">
+                <div className="icon-container">
                     <course.icon className="text-primary" size={24}/>
                 </div>
-                <div className="flex-1">
-                    <h3 className="text-xl font-familjen font-semibold text-primary-dark mb-2">
+                <div className="course-info">
+                    <h3 className="course-title">
                         {course.title}
                     </h3>
-                    <p className="text-text-muted font-inter mb-4">
+                    <p className="course-description">
                         {course.description}
                     </p>
-                    <div className="flex items-center gap-4 mb-3">
-                        <span className="text-sm font-inter text-text-muted">
+                    <div className="course-meta">
+                        <span className="module-count">
                             {course.modules} modules
                         </span>
-                        <span className="flex items-center gap-1 text-sm font-inter text-primary">
+                        <span className="start-learning">
                             <PlayCircle size={14}/> Start learning
                         </span>
                     </div>
@@ -129,33 +129,31 @@ const Learn = () => {
     );
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-background-alt to-background">
-            {/* Header */}
-            <header className="pt-16 pb-12 text-center">
-                <div className="max-w-4xl mx-auto px-4">
-                    <h1 className="text-5xl font-fraunces font-bold text-primary-dark mb-6">
+        <div className="page-container">
+            <header className="learn-header">
+                <div className="header-content">
+                    <h1 className="header-title animate-fade-in delay-1">
                         Your Learning Journey
                     </h1>
-                    <p className="text-xl text-text-muted font-inter mb-8">
+                    <p className="header-description animate-fade-in delay-2">
                         Master the fundamentals of AI in biological research and education
                     </p>
                 </div>
             </header>
 
-            {/* Learning Paths */}
-            <section className="pb-20">
-                <div className="max-w-6xl mx-auto px-4">
+            <section className="learning-paths">
+                <div className="container">
                     {coursePaths.map((path) => (
-                        <div key={path.id} className="mb-16">
-                            <div className="mb-8">
-                                <h2 className="text-3xl font-fraunces font-bold text-primary-dark mb-2">
+                        <div key={path.id} className="path-section animate-slide-in">
+                            <div className="path-header">
+                                <h2 className="path-title">
                                     {path.title}
                                 </h2>
-                                <p className="text-text-muted font-inter">
+                                <p className="path-description">
                                     {path.description}
                                 </p>
                             </div>
-                            <div className="grid md:grid-cols-2 gap-6">
+                            <div className="courses-grid">
                                 {path.courses.map((course) => (
                                     <CourseCard key={course.id} course={course} />
                                 ))}
@@ -165,70 +163,58 @@ const Learn = () => {
                 </div>
             </section>
 
-            {/* Course Progress Overview */}
-            <section className="mb-16">
-                <div className="max-w-6xl mx-auto px-4">
-                    <div className="bg-primary-dark rounded-xl p-8 text-white">
-                        <div className="flex items-center gap-4 mb-6">
+            <section className="progress-overview">
+                <div className="container">
+                    <div className="progress-card">
+                        <div className="progress-header">
                             <Star className="text-accent" size={32} />
                             <div>
-                                <h2 className="text-2xl font-familjen font-semibold mb-1">
+                                <h2 className="progress-title">
                                     Your Progress
                                 </h2>
-                                <p className="text-accent-light font-inter">
+                                <p className="progress-subtitle">
                                     Continue your learning journey
                                 </p>
                             </div>
                         </div>
-                        <div className="grid md:grid-cols-3 gap-6">
-                            <div className="bg-background/10 rounded-lg p-4">
-                                <div className="text-4xl font-familjen font-bold mb-2">0</div>
-                                <div className="text-sm font-inter text-accent-light">
-                                    Courses Completed
+                        <div className="stats-grid">
+                            {['Courses', 'Modules', 'Learning Time'].map((stat, index) => (
+                                <div key={stat} className="stat-card">
+                                    <div className="stat-value">0{stat === 'Learning Time' ? 'h' : ''}</div>
+                                    <div className="stat-label">
+                                        {stat} Completed
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="bg-background/10 rounded-lg p-4">
-                                <div className="text-4xl font-familjen font-bold mb-2">0</div>
-                                <div className="text-sm font-inter text-accent-light">
-                                    Modules Completed
-                                </div>
-                            </div>
-                            <div className="bg-background/10 rounded-lg p-4">
-                                <div className="text-4xl font-familjen font-bold mb-2">0h</div>
-                                <div className="text-sm font-inter text-accent-light">
-                                    Learning Time
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Course Modal */}
             {selectedCourse && (
-                <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-                    <div className="bg-background rounded-xl p-8 max-w-2xl w-full">
-                        <div className="flex items-start gap-4 mb-6">
-                            <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center">
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <div className="icon-container">
                                 <selectedCourse.icon className="text-primary" size={24} />
                             </div>
-                            <div className="flex-1">
-                                <h2 className="text-2xl font-familjen font-semibold text-primary-dark mb-2">
+                            <div className="modal-title-content">
+                                <h2 className="modal-title">
                                     {selectedCourse.title}
                                 </h2>
-                                <p className="text-text-muted font-inter mb-4">
+                                <p className="modal-description">
                                     {selectedCourse.description}
                                 </p>
-                                <div className="bg-background-alt rounded-lg p-4 mb-6">
-                                    <h3 className="font-familjen font-semibold text-primary-dark mb-2">
+                                <div className="course-details">
+                                    <h3 className="details-title">
                                         Course Details
                                     </h3>
-                                    <ul className="space-y-2 text-text-muted font-inter">
-                                        <li className="flex items-center gap-2">
+                                    <ul className="details-list">
+                                        <li>
                                             <BookOpen size={16} />
                                             {selectedCourse.modules} Modules
                                         </li>
-                                        <li className="flex items-center gap-2">
+                                        <li>
                                             <Star size={16} />
                                             {selectedCourse.level}
                                         </li>
@@ -236,16 +222,16 @@ const Learn = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex justify-end gap-4">
+                        <div className="modal-actions">
                             <button
                                 onClick={() => setSelectedCourse(null)}
-                                className="px-4 py-2 text-text-muted font-inter hover:text-text"
+                                className="btn-secondary"
                             >
                                 Close
                             </button>
                             <button
                                 onClick={() => handleStartCourse(selectedCourse.id)}
-                                className="bg-primary text-white px-6 py-2 rounded-lg font-familjen font-medium hover:bg-primary-light flex items-center gap-2"
+                                className="btn-primary"
                             >
                                 Start Course <ChevronRight size={16} />
                             </button>
