@@ -1,0 +1,37 @@
+.tree-path {
+    transition: all 0.3s ease;
+}
+
+.tree-path-highlight {
+    stroke: #10B981;
+    stroke-dasharray: 10;
+    animation: dash 20s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: -1000;
+    }
+}
+
+.tree-connection:hover .tree-path {
+    stroke-width: 4;
+}
+
+.tree-connection:hover .tree-path-highlight {
+    opacity: 0.6;
+}
+
+.locked-node {
+    filter: grayscale(0.5);
+    opacity: 0.7;
+}
+
+.node {
+    transition: transform 0.3s ease;
+}
+
+.node:hover {
+    transform: scale(1.1);
+}

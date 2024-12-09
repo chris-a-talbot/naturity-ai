@@ -11,6 +11,7 @@ import ResourcesForResearchers from './pages/ResourcesForResearchers';
 import ResourcesForEducators from './pages/ResourcesForEducators';
 import ResourcesForOrganizations from './pages/ResourcesForOrganizations';
 import Blog from "./pages/Blog"
+import PromptEngineeringCourse from "./pages/courses/PromptEngineeringCourse";
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
                     <Route path="/community" element={<Community />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/blog" element={<Blog />} />
+                    <Route path="/courses/prompt-engineering" element={<PromptEngineeringCourse />} />
                 </Routes>
             </Layout>
         </Router>
