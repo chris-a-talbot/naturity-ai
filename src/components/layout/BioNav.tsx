@@ -82,17 +82,17 @@ const BioNav = () => {
             ]
         },
         {
+            id: 'blog',
+            name: 'Blog',
+            path: '/blog',
+            priority: 6
+        },
+        {
             id: 'community',
             name: 'Community',
             path: '/community',
             priority: 4
         },
-        {
-            id: 'blog',
-            name: 'Blog',
-            path: '/blog',
-            priority: 6
-        }
     ];
 
     useEffect(() => {
