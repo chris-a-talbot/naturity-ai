@@ -1,50 +1,53 @@
-# React + TypeScript + Vite
+# NaturityAI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+From DNA to Deep Learning - Helping biologists use AI to explore and protect the natural world.
 
-Currently, two official plugins are available:
+## About
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+NaturityAI is a comprehensive platform dedicated to promoting AI literacy in ecology, evolutionary biology, and related biological fields. We support everyone from budding high school biologists to established professional researchers in leveraging artificial intelligence to advance their work and understanding of the natural world.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Educational Resources**: Curated learning paths for students, educators, and researchers
+- **Community Hub**: Connect with other biology professionals and enthusiasts
+- **Research Tools**: Access to specialized AI tools and frameworks for biological research
+- **Blog**: Latest updates on AI applications in biology and ecology
+- **Resource Library**: Specialized content for students, educators, researchers, and organizations
 
-- Configure the top-level `parserOptions` property like this:
+## Tech Stack
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Frontend**:
+  - TypeScript
+  - React
+  - Vite
+  - Tailwind CSS
+  - ESLint & Prettier
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **Backend**:
+  - Rust
+  - Axum
+  - PostgreSQL
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **Deployment**:
+  - Railway.app
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Contributing
+
+We welcome contributions from the community! Whether you're interested in fixing bugs, adding new features, or improving documentation, please feel free to make a pull request.
+
+## Connect With Us
+
+- Website: [naturity.ai](https://naturity.ai)
+- GitHub: [@NaturityAI](https://github.com/NaturityAI)
+- Twitter: [@naturityai](https://x.com/naturityai)
+- Instagram: [@naturityai](https://www.instagram.com/naturityai)
+- Facebook: [@naturityai](https://www.facebook.com/naturityai)
+- TikTok: [@naturityai](https://www.tiktok.com/@naturityai)
+
+## Contact
+
+For general inquiries: info@naturity.ai
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
